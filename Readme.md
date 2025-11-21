@@ -33,7 +33,8 @@ This dashboard allows you to:
 - 🔌 **REST API** endpoint → `/api/iocs`  
 - 💾 Lookup logs stored at `data/lookups_live.json`  
 
----# 🧠 Tech
+---
+## 🧠 Tech
 
 - **Python 3**
 - **Flask** (backend web framework)
