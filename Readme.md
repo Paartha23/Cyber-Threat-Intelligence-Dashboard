@@ -33,7 +33,53 @@ This dashboard allows you to:
 - 🔌 **REST API** endpoint → `/api/iocs`  
 - 💾 Lookup logs stored at `data/lookups_live.json`  
 
+---# 🧠 Tech
+
+- **Python 3**
+- **Flask** (backend web framework)
+- **TinyDB** (local JSON database — no MongoDB required)
+- **HTML / CSS / JavaScript**
+- **Bulma CSS Framework** (UI styling)
+- **Chart.js** (dashboard visualizations)
+- **Requests** (API calls to VT, OTX, AbuseIPDB, etc.)
+- **python-dotenv** (reads `.env` API keys)
+
 ---
 
-## 📁 Project Structure
+# 🔍 Functionality
+
+- `app.py` → Flask routes (Home, Lookup, Dashboard, API)
+- `tasks.py` → Main IOC enrichment logic  
+- `models.py` → TinyDB wrapper for IOCs and lookups  
+- `Utils/enrich_providers.py` → Calls VirusTotal, AbuseIPDB, OTX, GreyNoise, IPQS, URLScan, URLhaus  
+- `Utils/enrichment.py` → Computes scoring + severity + risk  
+- `ctidb.json` → Local IOC database  
+- `data/lookups_live.json` → Stores lookup history  
+- Templates:
+  - `index.html`
+  - `dashboard.html`
+  - `lookup.html`
+  - `base.html`
+
+All results are stored locally — **no external DB required**.
+
+---
+
+# 🚀 How to Run the Project
+
+Make sure Python 3 is installed.
+
+```bash
+# Clone your repository
+git clone https://github.com/Paartha23/Cyber-Threat-Intelligence-Dashboard.git
+cd Cyber-Threat-Intelligence-Dashboard
+
+# Install required Python packages
+pip install -r requirements.txt
+
+# Run the Flask application
+python app.py
+
+
+
 
