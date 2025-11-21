@@ -36,27 +36,4 @@ This dashboard allows you to:
 ---
 
 ## 📁 Project Structure
--CTI-Dashboard
-│
-├── app.py # Flask application routes
-├── config.py # Loads API keys from .env
-├── models.py # TinyDB wrapper for IOCs + lookups
-├── tasks.py # Main enrichment logic
-│
-├── Utils/
-│ ├── enrich_providers.py # Provider lookup functions (VT, AbuseIPDB...)
-│ └── enrichment.py # Score + severity calculation
-│
-├── templates/
-│ ├── base.html
-│ ├── dashboard.html
-│ ├── index.html
-│ └── lookup.html
-│
-├── data/
-│ └── lookups_live.json # Saved lookup entries (auto-created)
-│
-├── ctidb.json # TinyDB local database
-├── requirements.txt
-└── README.md
 
