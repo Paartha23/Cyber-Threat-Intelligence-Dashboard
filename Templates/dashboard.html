@@ -1,0 +1,112 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">Dashboard</h1>
+
+<!-- Embed data for JS -->
+<div id="dashboard-data"
+     data-total="{{ total|default(0) }}"
+     data-malicious="{{ malicious|default(0) }}"></div>
+
+<!-- Chart -->
+<div class="box" style="height:360px;">
+  <canvas id="summaryChart" width="400" height="300"></canvas>
+</div>
+
+<div id="chart-error" class="notification is-danger" style="display:none;">
+  Chart failed to render. Check browser console for details.
+</div>
+
+<!-- Recent IOCs -->
+<h2 class="subtitle">Recent IOCs</h2>
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Severity</th>
+      <th>Tags</th>
+      <th>Last Seen</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for r in recent %}
+      <tr>
+        <td>{{ r.ioc_type }}</td>
+        <td style="word-break: break-all;">{{ r.value }}</td>
+
+        <td>
+          {% if r.is_malicious %}
+            <span class="tag is-danger">Malicious</span>
+          {% elif r.severity == 'suspicious' %}
+            <span class="tag is-warning">Suspicious</span>
+          {% else %}
+            <span class="tag is-success">Clean</span>
+          {% endif %}
+
+          {% if r.score is defined %}
+            <small class="has-text-grey">({{ r.score }}%)</small>
+          {% endif %}
+        </td>
+
+        <td>
+          {% if r.tags %}
+            {{ r.tags | join(', ') }}
+          {% else %}
+            —
+          {% endif %}
+        </td>
+
+        <td>{{ r.last_seen }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="5">No IOCs found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const el = document.getElementById('dashboard-data');
+  const total = Number(el.dataset.total || 0);
+  const malicious = Number(el.dataset.malicious || 0);
+  const other = Math.max(0, total - malicious);
+
+  if (typeof Chart === "undefined") {
+    document.getElementById('chart-error').style.display = "block";
+    return;
+  }
+
+  const ctx = document.getElementById('summaryChart').getContext('2d');
+
+  try {
+    if (window.__summaryChartInstance) {
+      window.__summaryChartInstance.destroy();
+    }
+
+    window.__summaryChartInstance = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Malicious', 'Other'],
+        datasets: [{
+          data: [malicious, other]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+  } catch (err) {
+    document.getElementById('chart-error').style.display = "block";
+  }
+});
+</script>
+
+{% endblock %}

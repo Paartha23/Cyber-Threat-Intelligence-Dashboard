@@ -1,0 +1,12 @@
+[
+  {
+    "ioc": "8.8.8.8",
+    "type": "ip",
+    "lookup_id": "421086a1-600c-43f1-84c6-a9f1498834a3",
+    "status": "running",
+    "fetched_at": "2025-11-21T17:06:53.915373",
+    "results": [],
+    "meta": {},
+    "tags": []
+  }
+]

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Lookup IOC</h1>
+<form method="POST">
+  <div class="field">
+    <label class="label">Type</label>
+    <div class="control">
+      <div class="select">
+        <select name="ioc_type">
+          <option value="ip">IP</option>
+          <option value="domain">Domain</option>
+          <option value="url">URL</option>
+          <option value="hash">Hash</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Value</label>
+    <div class="control">
+      <input class="input" name="value" required />
+    </div>
+  </div>
+
+  <div class="control">
+    <button class="button is-primary">Lookup</button>
+  </div>
+</form>
+{% endblock %}

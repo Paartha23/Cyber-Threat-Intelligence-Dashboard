@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">Overview</h1>
+
+<div class="columns">
+  <div class="column">
+    <div class="box">
+      <p><strong>Total IOCs</strong></p>
+      <h2>{{ total }}</h2>
+    </div>
+  </div>
+  <div class="column">
+    <div class="box">
+      <p><strong>Malicious IOCs</strong></p>
+      <h2>{{ malicious }}</h2>
+    </div>
+  </div>
+</div>
+
+<h2 class="subtitle">Recent IOCs</h2>
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Tags</th>
+      <th>Last Seen</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in recent %}
+      <tr>
+        <td>{{ r.ioc_type }}</td>
+        <td style="word-break:break-all;">{{ r.value }}</td>
+        <td>
+          {% if r.tags %}
+            {{ r.tags | join(', ') }}
+          {% else %}
+            —
+          {% endif %}
+        </td>
+        <td>{{ r.last_seen }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="4">No IOCs found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
