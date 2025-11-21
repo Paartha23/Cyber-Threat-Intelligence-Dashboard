@@ -36,7 +36,7 @@ This dashboard allows you to:
 ---
 
 ## 📁 Project Structure
-CTI-Dashboard
+-CTI-Dashboard
 │
 ├── app.py # Flask application routes
 ├── config.py # Loads API keys from .env
