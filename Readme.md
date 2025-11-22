@@ -22,19 +22,19 @@ This dashboard allows you to:
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 🔍 **IOC Lookup** (IP, domain, URL, hash)  
-- 📡 **Real-time enrichment** using 7+ threat-intel providers  
-- 🧠 **Automatic scoring** → clean / suspicious / malicious  
-- 🏷️ **Tag generation** (vt-malicious, abuse-high, grey-scan, etc.)  
-- 🗂️ **Local persistence** using TinyDB (`ctidb.json`)  
-- 📊 **Dashboard** with Chart.js doughnut graph  
-- 🔌 **REST API** endpoint → `/api/iocs`  
-- 💾 Lookup logs stored at `data/lookups_live.json`  
+-  **IOC Lookup** (IP, domain, URL, hash)  
+-  **Real-time enrichment** using 7+ threat-intel providers  
+-  **Automatic scoring** → clean / suspicious / malicious  
+-  **Tag generation** (vt-malicious, abuse-high, grey-scan, etc.)  
+-  **Local persistence** using TinyDB (`ctidb.json`)  
+-  **Dashboard** with Chart.js doughnut graph  
+-  **REST API** endpoint → `/api/iocs`  
+-  Lookup logs stored at `data/lookups_live.json`  
 
 ---
-## 🧠 Tech
+##  Tech
 
 - **Python 3**
 - **Flask** (backend web framework)
@@ -47,7 +47,7 @@ This dashboard allows you to:
 
 ---
 
-# 🔍 Functionality
+#  Functionality
 
 - `app.py` → Flask routes (Home, Lookup, Dashboard, API)
 - `tasks.py` → Main IOC enrichment logic  
@@ -66,7 +66,7 @@ All results are stored locally — **no external DB required**.
 
 ---
 
-# 🚀 How to Run the Project
+#  How to Run the Project
 
 Make sure Python 3 is installed.
 
